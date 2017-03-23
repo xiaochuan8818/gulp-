@@ -139,42 +139,6 @@ gulp.task('default',
 		console.log(info);
 	}
 );
-
-/* 自动刷新 start */
-gulp.task('browser', function () {
-  return browserSync({
-    port: 3000,
-    open: true,
-    startPath: '/',
-    server: {
-      directory: true,
-      routes: {
-        '/': '/'
-      },
-      middleware: function (req, res, next) {
-        console.log('middleWare.');
-        next();
-      },
-      baseDir: './'
-    },
-    //指定浏览器
-    browser: 'chrome',
-    //延迟刷新，默认为0
-    reloadDelay: 1,
-    //是否载入css修改，默认true
-    injectChanges: true
-  });
-});
-
-gulp.task('bro', function () {
-  return gulp.src('./src/*')
-             .pipe(browserSync.reload({
-                stream: true
-              }));
-});
-/* 自动刷新 end */
-
-
 //清除所有打包文件
 gulp.task('clean', function() {
 	return gulp.src('dist/*')
